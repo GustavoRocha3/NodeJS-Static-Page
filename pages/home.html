@@ -7,10 +7,10 @@
 
                 </div>
                 <div class="title-destaque-descricao">
-                    <h2>Quer fugir das praias de verão?</h2>
-                    <p>Veja os melhores destinos para uma viagem a dois, com seu grupo ou até mesmo sozinho. Aproveite o calor longe das praias, curta lagos, cachoeiras e muito mais nesses destinos incríveis.</p>
+                    <a href="<%= posts[0].slug %>"><h2><%= posts[0].titulo %></h2></a>
+                    <p><%- posts[0].descricaoCurta %>...</p>
                 </div>
-                <img src="/public/images/landscape.jfif" alt="" srcset="">
+                <img src="<%= posts[0].imagem %>" alt="" srcset="">
             </div>  
         </div>
      </section>
@@ -20,60 +20,36 @@
             <h2>Últimas Notícias</h2>
             <div class="center">
                 <div class="ultimas">
+
+                    <% for(let i = 1; i < posts.length; i ++){ %>
+
                     <div class="box-ultima-single">
-                        <img src="/public/images/IMAGEM2.png" alt="" srcset="">
+                        <img src="<%= posts[i].imagem %>" alt="" srcset="">
                         <div class="conteudo-noticia-single">
-                            <h3>Natureza e Geral</h3>
-                            <h2>Como encarar o surf mesmo no frio</h2>
-                            <p>A água gelada e o vento pode acabar com a sua felicidade de ir para a água</p>
-                            <a href="/encarar-o-surf">Saiba mais</a>
+                            <h3><%= posts[i].categoria %></h3>
+                            <h2><%= posts[i].titulo %></h2>
+                            <p><%- posts[i].descricaoCurta %></p>
+                            <a href="<%= posts[i].slug %>">Saiba mais</a>
                         </div>
                     </div>
-                    <div class="box-ultima-single">
-                        <img src="/public/images/IMAGEM2.png" alt="" srcset="">
-                        <div class="conteudo-noticia-single">
-                            <h3>Natureza e Geral</h3>
-                            <h2>Como encarar o surf mesmo no frio</h2>
-                            <p>A água gelada e o vento pode acabar com a sua felicidade de ir para a água</p>
-                            <a href="/encarar-o-surf">Saiba mais</a>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
                 <div class="mais-lidas">
                     <h3>Mais Lidas</h3>
                     <div class="mais-lidas-noticias">
+
+                        <% for(let i = 1; i < posts.length; i ++){ %>
+
                         <div class="mais-lida-noticia-single">
-                            <img src="/public/images/NATUREZA1.png" alt="">
+                            <img src="<%= posts[i].imagem %>" alt="">
                             <div class="texto-mais-lida-single">
-                                <h4>Natureza</h4>
-                                <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                <a href="/encarar-o-surf">Saiba mais</a>
+                                <h4><%= posts[i].titulo %></h4>
+                                <p><%- posts[i].descricaoCurta %></p>
+                                <a href="<%= posts[i].slug %>">Saiba mais</a>
                             </div>
                         </div>
-                        <div class="mais-lida-noticia-single">
-                            <img src="/public/images/NATUREZA1.png" alt="">
-                            <div class="texto-mais-lida-single">
-                                <h4>Natureza</h4>
-                                <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                <a href="/encarar-o-surf">Saiba mais</a>
-                            </div>
-                        </div>
-                        <div class="mais-lida-noticia-single">
-                            <img src="/public/images/NATUREZA1.png" alt="">
-                            <div class="texto-mais-lida-single">
-                                <h4>Natureza</h4>
-                                <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                <a href="/encarar-o-surf">Saiba mais</a>
-                            </div>
-                        </div>
-                        <div class="mais-lida-noticia-single">
-                            <img src="/public/images/NATUREZA1.png" alt="">
-                            <div class="texto-mais-lida-single">
-                                <h4>Natureza</h4>
-                                <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                <a href="/encarar-o-surf">Saiba mais</a>
-                            </div>
-                        </div>
+                        <% } %>
+                        
                     </div>
                 </div>
             </div>
