@@ -9,7 +9,7 @@
             </div>
             <br>
             <div> 
-                <img style="max-width: 100%;" src="<%= noticia.imagem %>"/> 
+                <img style="width: 100%; height: 400px;" src="<%= noticia.imagem %>"/> 
             </div>
             <br>
             <p><%- noticia.conteudo %></p>
@@ -18,38 +18,25 @@
         <div class="mais-lidas">
             <h3>Mais Lidas</h3>
             <div class="mais-lidas-noticias">
+
+                <% for(let i = 0; i < postsTop.length; i ++){ %>
+
                 <div class="mais-lida-noticia-single">
-                    <img src="/public/images/NATUREZA1.png" alt="">
+                    <div class="mais-lida-noticia-img">
+                        <img src="<%= postsTop[i].imagem %>" alt="">
+                    </div>
                     <div class="texto-mais-lida-single">
-                        <h4>Natureza</h4>
-                        <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                        <a href="/encarar-o-surf">Saiba mais</a>
+                        <h4><%= postsTop[i].titulo %></h4>
+                        <% if (postsTop[i].descricaoCurta.length < 34) { %>
+                            <p><%- postsTop[i].descricaoCurta %></p> <p> - <span style="font-size: 12px; font-weight: bold;">(<%= postsTop[i].views %> views)</span></p>
+                         <% } else { %>
+                            <p><%- postsTop[i].descricaoCurta %>...</p> <p> - <span style="font-size: 12px; font-weight: bold;">(<%= postsTop[i].views %> views)</span></p>
+                        <% } %>
+                        <a href="<%= postsTop[i].slug %>">Saiba mais</a>
                     </div>
                 </div>
-                <div class="mais-lida-noticia-single">
-                    <img src="/public/images/NATUREZA1.png" alt="">
-                    <div class="texto-mais-lida-single">
-                        <h4>Natureza</h4>
-                        <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                        <a href="/encarar-o-surf">Saiba mais</a>
-                    </div>
-                </div>
-                <div class="mais-lida-noticia-single">
-                    <img src="/public/images/NATUREZA1.png" alt="">
-                    <div class="texto-mais-lida-single">
-                        <h4>Natureza</h4>
-                        <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                        <a href="/encarar-o-surf">Saiba mais</a>
-                    </div>
-                </div>
-                <div class="mais-lida-noticia-single">
-                    <img src="/public/images/NATUREZA1.png" alt="">
-                    <div class="texto-mais-lida-single">
-                        <h4>Natureza</h4>
-                        <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                        <a href="/encarar-o-surf">Saiba mais</a>
-                    </div>
-                </div>
+                <% } %>
+                
             </div>
         </div>
     </div>

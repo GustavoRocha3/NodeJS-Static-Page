@@ -8,7 +8,7 @@ const app = express();
 
 const Posts = require('./Posts')
 
-mongoose.connect('mongodb+srv://root:tKl8SZeV7pEFIyQS@cluster0.nkyzl.mongodb.net/dankicode?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
+mongoose.connect('mongodb+srv://admin:mega6401@cluster0.nkyzl.mongodb.net/dankicode?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
     console.log('Conectado com sucesso');
 }).catch((err)=>{
     console.log(err.message);
@@ -29,7 +29,8 @@ app.get('/', (req,res) => {
     // console.log(req.query.busca)
 
     if(req.query.busca == null){
-        Posts.find({}).exec()
+        //requisição para trazer todas as noticias, da mais nova para a mais antiga
+        Posts.find({}).sort({'_id': -1}).exec()
         .then((posts) => {
             posts = posts.map((val) =>{
                 return {
@@ -40,23 +41,73 @@ app.get('/', (req,res) => {
                     slug: val.slug,
                     categoria: val.categoria
                 }
+            });
+            //requisição para ordenar criar o card de Mais Lidas por ordem de mais visualizadas
+            Posts.find({}).sort({'views': -1}).limit(3).exec()
+            .then((postsTop) => {
+                postsTop = postsTop.map((val) => {
+                    return {
+                        titulo: val.titulo,
+                        conteudo: val.conteudo,
+                        descricaoCurta: val.conteudo.substr(0,35),
+                        imagem: val.imagem,
+                        slug: val.slug,
+                        categoria: val.categoria,
+                        views: val.views
+                    }
+                })
+                res.render('home',{posts:posts,postsTop:postsTop});
+
+            }).catch((err) => {
+                console.log(err.message);
             })
-            res.render('home',{posts:posts});
+
         }).catch((err) => {
             console.log(err.message);
         })
     }else{
-        res.render('busca',{});
+
+        Posts.find({titulo: {$regex: req.query.busca, $options:"i"}})
+        .then((posts) =>{
+            // console.log(posts)
+            res.render('busca',{posts:posts, contagem:posts.length});
+        })
+        .catch((err) => {
+            console.log(err.message);
+        })
+
     }
 
 })
 
+//acessa a notícia selecionada
 app.get('/:slug', (req,res) => {
-    // res.send(req.params.slug);
+    //requisição para atualizar a quantidade de views
     Posts.findOneAndUpdate({slug: req.params.slug}, {$inc: {views: 1}}, {new: true})
     .then(resposta => {
-        console.log(resposta);
-        res.render('single',{noticia:resposta});
+        if(resposta != null){
+            // traz as informações de todas as noticias para mostrar na tela
+            Posts.find({}).sort({'views': -1}).limit(3).exec()
+            .then((postsTop) => {
+                postsTop = postsTop.map((val) => {
+                    return {
+                        titulo: val.titulo,
+                        conteudo: val.conteudo,
+                        descricaoCurta: val.conteudo.substr(0,35),
+                        imagem: val.imagem,
+                        slug: val.slug,
+                        categoria: val.categoria,
+                        views: val.views
+                    }
+                })
+                res.render('single',{noticia:resposta, postsTop:postsTop});
+
+            }).catch((err) => {
+                console.log(err.message);
+            })
+        } else {
+            res.redirect('/');
+        }
     })
     .catch(err => {
         console.log(err.message)

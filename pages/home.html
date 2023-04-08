@@ -28,7 +28,11 @@
                         <div class="conteudo-noticia-single">
                             <h3><%= posts[i].categoria %></h3>
                             <h2><%= posts[i].titulo %></h2>
-                            <p><%- posts[i].descricaoCurta %></p>
+                            <% if (posts[i].descricaoCurta.length < 99) { %>
+                                <p><%- posts[i].descricaoCurta %></p>
+                             <% } else { %>
+                                <p><%- posts[i].descricaoCurta %>...</p>
+                            <% } %>
                             <a href="<%= posts[i].slug %>">Saiba mais</a>
                         </div>
                     </div>
@@ -38,14 +42,20 @@
                     <h3>Mais Lidas</h3>
                     <div class="mais-lidas-noticias">
 
-                        <% for(let i = 1; i < posts.length; i ++){ %>
+                        <% for(let i = 0; i < postsTop.length; i ++){ %>
 
                         <div class="mais-lida-noticia-single">
-                            <img src="<%= posts[i].imagem %>" alt="">
+                            <div class="mais-lida-noticia-img">
+                                <img src="<%= postsTop[i].imagem %>" alt="">
+                            </div>
                             <div class="texto-mais-lida-single">
-                                <h4><%= posts[i].titulo %></h4>
-                                <p><%- posts[i].descricaoCurta %></p>
-                                <a href="<%= posts[i].slug %>">Saiba mais</a>
+                                <h4><%= postsTop[i].titulo %></h4>
+                                <% if (postsTop[i].descricaoCurta.length < 34) { %>
+                                    <p><%- postsTop[i].descricaoCurta %></p> <p> - <span style="font-size: 12px; font-weight: bold;">(<%= postsTop[i].views %> views)</span></p>
+                                 <% } else { %>
+                                    <p><%- postsTop[i].descricaoCurta %>...</p> <p> - <span style="font-size: 12px; font-weight: bold;">(<%= postsTop[i].views %> views)</span></p>
+                                <% } %>
+                                <a href="<%= postsTop[i].slug %>">Saiba mais</a>
                             </div>
                         </div>
                         <% } %>
