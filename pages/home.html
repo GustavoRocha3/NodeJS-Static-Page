@@ -8,7 +8,11 @@
                 </div>
                 <div class="title-destaque-descricao">
                     <a href="<%= posts[0].slug %>"><h2><%= posts[0].titulo %></h2></a>
-                    <p><%- posts[0].descricaoCurta %>...</p>
+                    <% if (posts[0].descricaoCurta.length < 99) { %>
+                        <p><%- posts[0].descricaoCurta %></p>
+                    <% } else { %>
+                        <p><%- posts[0].descricaoCurta %>...</p>
+                    <% } %>
                 </div>
                 <img src="<%= posts[0].imagem %>" alt="" srcset="">
             </div>  

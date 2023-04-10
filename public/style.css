@@ -10,9 +10,16 @@
     color: white;
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
 header{
     padding:8px 0;
-    background-color: #0aacdc;
+    background-color: #e92b2b;
     text-align: center;
 }
 
@@ -27,6 +34,20 @@ header{
 .logo{
     text-align: left;
     width:50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo li {
+    list-style: none;
+}
+
+.logo ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    width: 350px;
 }
 
 .logo h2{
@@ -41,14 +62,29 @@ header{
 
 .form-busca{
     width:50%;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
+}
+
+.form-busca a {
+    background-color: #d55;
+    padding: 10px 20px;
+    border-radius: 7px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.form-busca a:hover {
+    background-color: #f27474;
 }
 
 .form-busca form{
     display: inline-block;
     max-width: 200px;
     position: relative;
+    margin-right: 60px;
 }
 
 .form-busca i{
@@ -65,11 +101,73 @@ header{
     border:0;
     font-size: 20px;
     color:white;
-    background-color: #008bb4;
+    background-color: #d55;
     padding-left: 40px;
     border-radius:10px;
 }
+/* body do login */
+.body-login {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background-color: #EAEAEA;
+    height: 100%;
+}
 
+.section-login {
+    height: 350px; 
+    width: 350px; 
+    padding: 10px; 
+    border: 1px solid black; 
+    border-radius: 7px;
+    background-color: #fff;
+}
+
+.form-login {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-evenly; 
+    align-items: center; 
+    height: 100%;
+}
+
+.form-auth {
+    display: flex; 
+    flex-direction: column; 
+    width: 70%; 
+    margin-top: 10px;
+}
+
+.form-auth h2 {
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-auth input {
+    margin-bottom: 15px;
+    border: 1px solid #303336;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.form-btn {
+    margin-bottom: 20px;
+}
+
+.form-btn button {
+    background-color: #d55;
+    border: 1px solid #d55;
+    padding: 10px 40px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-btn button:hover {
+    background-color: #f27474;
+}
+
+/* body do login */
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;
@@ -176,7 +274,7 @@ header{
 
   .box-ultima-single h3{
       font-size: 16px;
-      color: #33439B;
+      color: #d55;
       margin:20px 0;
   }
 
@@ -198,7 +296,7 @@ header{
       height: 56px;
      border: 1px solid #EBEBEB;
      text-decoration: none;
-     color:#0AACDC;
+     color:#f27474;
      border-radius:10px;
      line-height: 56px;
      text-align: center;
@@ -213,11 +311,12 @@ header{
       width:40%;
       height:100%;
       background-color:white;
+      border-radius: 9px 9px 0 0;
   }
  
 
   .mais-lidas > h3{
-      background-color: #3F51B5;
+      background-color: #f27474;
       color:white;
       text-align: center;
       padding:10px 8px;
@@ -261,7 +360,7 @@ header{
   }
 
   .texto-mais-lida-single h4{
-      color:#40BE65;
+      color:#e92b2b;
       letter-spacing: 3.2px;
   }
 
@@ -277,7 +376,7 @@ header{
         height: 36px;
         border: 1px solid #EBEBEB;
         text-decoration: none;
-        color:#0AACDC;
+        color:#f27474;
         border-radius:10px;
         line-height: 36px;
         text-align: center;
@@ -286,7 +385,7 @@ header{
 
   footer{
       
-      background-color: #0aacdc;
+      background-color: #e92b2b;
       text-align: center;
       color:white;
       padding:8px 0;
@@ -333,6 +432,29 @@ header{
     font-size: 33px;
     margin:10px 0;
   }
+
+  /* EFEITO DE HOVER NO LINK */
+  .hover-line {
+    position: relative;
+    padding: 5px;
+  }
+  
+  .hover-line:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .hover-line:hover:after {
+    width: 100%;
+  }
+  /* EFEITO DE HOVER NO LINK */
+
 
   @media screen and (max-width: 768px){
       .noticia-single{

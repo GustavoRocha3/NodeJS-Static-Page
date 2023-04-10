@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -7,21 +7,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public/javascripts/default.js">
     <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-j/74Q2Rn9X37VYl1Zz+5D2QJZztxStV5+5JMyf7x3q+yk0X1VpzO4p+g4wJ4Z4f4yO2MNHtjLu7Jxk1t9Xllpg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Projeto Portal Noticias</title>
+    <title>TechNews - Portal Noticias</title>
 </head>
 <body>
     <header>
         <div class="center">
             <div class="logo">
-                <h2><a href="/"><span style="font-weight: lighter;">Danki</span><b>News</b></a></h2>
+                <h2><a href="/"><span style="font-weight: lighter;">Tech</span><b>News</b></a></h2>
+                <ul>
+                    <li class="hover-line"><a href="/writeArticle">Escrever artigo</a></li>
+                    <li class="hover-line"><a href="/categorias">Categorias</a></li>
+                </ul>
             </div>
             <div class="form-busca">
                 <form action="/">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fas fa-search"></i>
                     <input type="text" name="busca" placeholder="Busca...">
                 </form>
+                <a href="/login">Login</a>
             </div>
         </div>
     </header>
